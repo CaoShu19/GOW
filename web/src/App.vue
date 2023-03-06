@@ -1,8 +1,5 @@
 <template>
-  <div>
-    <div>name:{{ bot_name }}</div>
-    <div>stan:{{ bot_rating }}</div>
-  </div>
+  <NavBar></NavBar>
   
   <router-view/>
 </template>
@@ -10,8 +7,15 @@
 <script>
 import $ from 'jquery';
 import {ref} from 'vue';
+import NavBar from '@/components/NavBar.vue';
+import "bootstrap/dist/css/bootstrap.min.css"
+import "bootstrap/dist/js/bootstrap"
+
 
 export default{
+  components:{
+        NavBar,
+    },
   name:"App",
   setup:()=>{
     let bot_name = ref("");
@@ -24,7 +28,6 @@ export default{
         
         bot_name.value = resp.name;
         bot_rating.value = resp.rating;
-        console.log(resp);
       }
     })
 
@@ -39,7 +42,7 @@ export default{
 </script>
 <style>
 body{
-  background-image: url("@/assets/background.png");
+  background-image: url("@/assets/images/background.png");
   background-size: cover;
 }
 </style>
