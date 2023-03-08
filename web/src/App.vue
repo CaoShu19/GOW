@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import $ from 'jquery';
+
 import {ref} from 'vue';
 import NavBar from '@/components/NavBar.vue';
 import "bootstrap/dist/css/bootstrap.min.css"
@@ -20,16 +20,6 @@ export default{
   setup:()=>{
     let bot_name = ref("");
     let bot_rating = ref("");
-
-    $.ajax({
-      url:"http://localhost:3000/pk/index",
-      type:"GET",
-      success:(resp)=>{
-        
-        bot_name.value = resp.name;
-        bot_rating.value = resp.rating;
-      }
-    })
 
     return {
       bot_name,
