@@ -36,7 +36,6 @@ export default{
     },
     actions: {
         login(context,data){
-            console.log(data);
             $.ajax({
                 url:"http://localhost:3000/user/account/token/",
                 type:"POST",
