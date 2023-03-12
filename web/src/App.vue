@@ -32,7 +32,8 @@ export default{
 </script>
 <style>
 body{
-  background-image: url("@/assets/images/background.png");
+  /* background-image: url("@/assets/images/background.png"); */
+  background:  linear-gradient(to right, green, purple);
   background-size: cover;
 }
 </style>

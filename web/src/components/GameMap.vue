@@ -7,18 +7,21 @@
 <script>
 import { GameMap } from '../assets/scripts/GameMap';
 import { ref,onMounted } from 'vue';
+import { useStore } from 'vuex';
+
 
 export default{
     setup(){
-        
+        const store = useStore()
         let parent = ref(null);
         let canvas = ref(null);
 
         //onMounted函数会在引用挂载在标签上完毕后，执行里面的函数参数
         onMounted(()=>{
             
-            new GameMap(canvas.value.getContext('2d'),parent.value)
-            console.log(parent.value);
+            store.commit("updateGameObject",
+            new GameMap(canvas.value.getContext('2d'),parent.value,store))
+            
         })
 
         return {

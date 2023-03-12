@@ -1,0 +1,34 @@
+package com.gow.matchingsystem.controller;
+
+import com.gow.matchingsystem.service.MatchingService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.MultiValueMap;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+/**
+ * @author : Str2ke
+ * @date : 2023/3/10 下午5:26
+ * @Desc :
+ */
+@RestController
+public class MatchingController {
+    @Autowired
+    private MatchingService matchingService;
+
+    @PostMapping("/player/add/")
+    public String addPlayer(@RequestParam MultiValueMap<String,String> data){
+        System.out.println("into added"+ data);
+        Integer userId = Integer.parseInt(data.getFirst("user_id"));
+        Integer rating = Integer.parseInt(data.getFirst("rating"));
+        Integer botId = Integer.parseInt(data.getFirst("bot_id"));
+        return matchingService.addPlayer(userId,rating,botId);
+    }
+
+    @PostMapping("/player/remove/")
+    public String removePlayer(@RequestParam MultiValueMap<String,String> data){
+        Integer userId = Integer.parseInt(data.getFirst("user_id"));
+        return matchingService.removePlayer(userId);
+    }
+}

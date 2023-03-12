@@ -45,7 +45,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }
 
-
+    //放开websocket接入url
     @Override
     public void configure(WebSecurity web) throws Exception {
         web.ignoring().antMatchers("/websocket/**");
